@@ -1,0 +1,38 @@
+# Copyright (C) 2026 chickendrop89
+# SPDX-License-Identifier: GPL-3.0-only
+
+on property:init.svc.boot-hal-1-2=running
+    setprop prepdecrypt.setpatch true
+
+on init
+    start vendor.qseecomd
+
+# Runs after qseecomd starts
+on property:vendor.sys.listeners.registered=true
+    start vendor.ssgtzd
+    start vendor.keymint-qti
+    start vendor.gatekeeper-qti
+
+# Runs during post-fs-data
+on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true
+    start vendor.prepdecrypt
+
+# Runs after decryption
+on property:twrp.all.users.decrypted=true
+    setprop crypto.ready 0
+
+    stop keystore2
+    stop vendor.keymint-qti
+    stop vendor.qseecomd
+    stop vendor.ssgtzd
+    stop vendor.gatekeeper-qti
+
+# Runs after decryption, and running touchscreen service 
+on property:init.svc.touchfeature-service=running
+    exec u:r:recovery:s0 -- /system/bin/sleep 5
+
+    umount /vendor/firmware_mnt
+    umount /firmware
+    umount /mnt/vendor/persist
+
+    setprop twrp.firmware.mounted false

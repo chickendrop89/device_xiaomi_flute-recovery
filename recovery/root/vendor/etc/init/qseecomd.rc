@@ -1,0 +1,17 @@
+# Copyright (C) 2025 The Android Open Source Project
+# Copyright (C) 2026 chickendrop89
+# SPDX-License-Identifier: Apache-2.0
+
+on fs
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+
+service vendor.qseecomd /vendor/bin/qseecomd
+    user root
+    group root drmrpc
+    socket notify-topology stream 660 system drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/bin
+    seclabel u:r:recovery:s0
+    disabled

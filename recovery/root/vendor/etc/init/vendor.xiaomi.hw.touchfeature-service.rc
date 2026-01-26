@@ -1,0 +1,20 @@
+# Copyright (C) 2025 The Android Open Source Project
+# Copyright (C) 2026 chickendrop89
+# SPDX-License-Identifier: Apache-2.0
+
+on init
+    mkdir /data/vendor/mqsas_common 0771 system system
+    mkdir /data/vendor/touch 0771 system system
+    mkdir /data/vendor/touch_state 0771 system system
+
+    start touchfeature-service
+
+service touchfeature-service /vendor/bin/hw/vendor.xiaomi.hw.touchfeature-service
+    user root
+    group root system input
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/vendor/odm/lib64:/bin
+    seclabel u:r:recovery:s0
+    capabilities SYS_NICE
+    priority -10
+    ioprio rt 4
+    disabled
