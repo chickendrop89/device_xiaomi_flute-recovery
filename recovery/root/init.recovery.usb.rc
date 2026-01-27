@@ -45,7 +45,7 @@ on property:init.svc.adbd=stopped
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
-    write /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode peripheral
+    write /sys/bus/platform/devices/4e00000.ssusb/mode peripheral
 
 on property:sys.usb.config=adb && property:sys.usb.configfs=1
     start adbd
