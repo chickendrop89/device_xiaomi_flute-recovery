@@ -43,6 +43,3 @@ OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
 # Fix clock/time issues
 OF_USE_LEGACY_TIME_FIXUP := 1
 OF_DEFAULT_TIMEZONE := GMT-5
-
-# Skip decryption for now
-OF_SKIP_FBE_DECRYPTION := 0
