@@ -129,7 +129,7 @@ TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
 # Vendor modules required for the recovery to function properly
 TW_LOAD_VENDOR_MODULES  += "panel_event_notifier.ko xiaomi_touch.ko
 TW_LOAD_VENDOR_MODULES  += focaltech_ft8208.ko nt36532_spi.ko adsp_loader_dlkm.ko
-TW_LOAD_VENDOR_MODULES  += qti_battery_charger.ko camera.ko"
+TW_LOAD_VENDOR_MODULES  += qti_battery_charger.ko camera.ko dwc3-msm.ko"
 
 TW_EXCLUDE_DEFAULT_USB_INIT   := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
