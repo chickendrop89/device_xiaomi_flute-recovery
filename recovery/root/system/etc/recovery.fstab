@@ -16,8 +16,8 @@ vendor                                                  /vendor                e
 vendor                                                  /vendor                ext4    ro,barrier=1,discard                                 wait,slotselect,avb=vbmeta,logical,first_stage_mount
 odm                                                     /odm                   erofs   ro                                                   wait,slotselect,avb=vbmeta,logical,first_stage_mount
 odm                                                     /odm                   ext4    ro,barrier=1,discard                                 wait,slotselect,avb=vbmeta,logical,first_stage_mount
-mi_ext                                                  /mi_ext                erofs   ro,nofail                                            wait,slotselect,avb=vbmeta,logical,first_stage_mount
-mi_ext                                                  /mi_ext                ext4    ro,nofail,barrier=1,discard                          wait,slotselect,avb=vbmeta,logical,first_stage_mount
+mi_ext                                                  /mi_ext                erofs   ro                                                   wait,slotselect,avb=vbmeta,logical,first_stage_mount,nofail
+mi_ext                                                  /mi_ext                ext4    ro,barrier=1,discard                                 wait,slotselect,avb=vbmeta,logical,first_stage_mount,nofail
 
 vendor_dlkm                                             /vendor_dlkm           erofs   ro                                                   wait,slotselect,avb=vbmeta,logical,first_stage_mount
 vendor_dlkm                                             /vendor_dlkm           ext4    ro,barrier=1,discard                                 wait,slotselect,avb=vbmeta,logical,first_stage_mount
