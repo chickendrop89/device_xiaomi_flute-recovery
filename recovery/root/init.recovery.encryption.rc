@@ -4,19 +4,11 @@
 on init
     start vendor.qseecomd
 
-# Runs sometime during init
-on property:init.svc.boot-hal-1-2=running
-    setprop prepdecrypt.setpatch true
-
 # Runs after qseecomd starts
 on property:vendor.sys.listeners.registered=true
     start vendor.ssgtzd
     start vendor.keymint-qti
     start vendor.gatekeeper-qti
-
-# Runs during post-fs-data
-on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true
-    start vendor.prepdecrypt
 
 # Runs after decryption
 on property:twrp.all.users.decrypted=true
