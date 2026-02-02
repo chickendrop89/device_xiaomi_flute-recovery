@@ -29,7 +29,7 @@ on property:twrp.all.users.decrypted=true
 
 # Runs after decryption, and running touchscreen service 
 on property:init.svc.touchfeature-service=running && property:twrp.firmware.mounted=true
-    exec u:r:recovery:s0 -- /system/bin/sleep 5
+    exec u:r:recovery:s0 -- /system/bin/sh -c "/system/bin/sleep 1"
 
     umount /vendor/firmware_mnt
     umount /firmware
