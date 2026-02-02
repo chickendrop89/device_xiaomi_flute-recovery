@@ -8,6 +8,12 @@ on early-init
     write /sys/fs/selinux/enforce 0
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
 
+on early-init
+    # UFS Tuning
+    write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 0
+    write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 0
+    write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 0
+
 on property:twrp.modules.loaded=true
     mkdir /firmware 0775 shell system
     mkdir /vendor/firmware_mnt 0775 shell system
@@ -36,9 +42,11 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
+on fs
     # All entries in recovery.fstab
     write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sda/queue/discard_max_bytes 134217728
 
     # Persist partition
     write /sys/block/sdf/queue/read_ahead_kb 2048
