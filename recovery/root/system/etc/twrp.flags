@@ -36,7 +36,7 @@
 
 # VBMeta/AVB partitions
 /dtbo                  emmc    /dev/block/bootdevice/by-name/dtbo                                 flags=display="DTBO";backup=1;slotselect;flashimg=1
-/vbmeta                emmc    /dev/block/bootdevice/by-name/vbmeta                               flags=display="VBMeta";backup=1;backup=1;slotselect;flashimg=1
+/vbmeta                emmc    /dev/block/bootdevice/by-name/vbmeta                               flags=display="VBMeta";backup=1;slotselect;flashimg=1
 /vbmeta_system         emmc    /dev/block/bootdevice/by-name/vbmeta_system                        flags=display="VBMeta System";backup=1;slotselect;flashimg=1
 
 # Persistent Firmware & Properties
@@ -45,13 +45,11 @@
 
 # Modem/Firmware partitions
 /modem                 vfat    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;fsflags="ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait"
-/modem_image           emmc    /dev/block/bootdevice/by-name/modem                                flags=display="Modem/Bluetooth";slotselect;backup=1
-
+/modem_image           emmc    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;backup=1;flashimg=1
 /dsp                   ext4    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect;fsflags="ro"
-/dsp_image             emmc    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect;backup=1;subpartitionof=/modem_image
-
+/dsp_image             emmc    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect;backup=1
 /bluetooth             vfat    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait"
-/bluetooth_image       emmc    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;backup=1;subpartitionof=/modem_image
+/bluetooth_image       emmc    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;backup=1;flashimg=1
 
 # EFS partitions
 /efs1                  emmc    /dev/block/bootdevice/by-name/modemst1                             flags=display="EFS";backup=1;
@@ -61,6 +59,12 @@
 /spunvm                emmc    /dev/block/bootdevice/by-name/spunvm                               flags=backup=1;subpartitionof=/efs1
 /qmcs                  emmc    /dev/block/bootdevice/by-name/qmcs                                 flags=backup=1;subpartitionof=/efs1
 
+# DRM / Device key partitions
+/ssd                   emmc    /dev/block/bootdevice/by-name/ssd                                  flags=display="DRM/Security";backup=1
+/secdata               emmc    /dev/block/bootdevice/by-name/secdata                              flags=backup=1;subpartitionof=/ssd
+/keystore              emmc    /dev/block/bootdevice/by-name/keystore                             flags=backup=1;subpartitionof=/ssd
+/opconfig              emmc    /dev/block/bootdevice/by-name/opconfig                             flags=backup=1;subpartitionof=/ssd
+
 # Bootloader/TrustZone/Hypervisor partitions
 /abl                   emmc    /dev/block/bootdevice/by-name/abl                                  flags=display="Bootloader/Trustzone";backup=1;slotselect
 /xbl                   emmc    /dev/block/bootdevice/by-name/xbl                                  flags=backup=1;slotselect;subpartitionof=/abl
@@ -68,6 +72,7 @@
 /tz                    emmc    /dev/block/bootdevice/by-name/tz                                   flags=backup=1;slotselect;subpartitionof=/abl
 /hyp                   emmc    /dev/block/bootdevice/by-name/hyp                                  flags=backup=1;slotselect;subpartitionof=/abl
 /uefi                  emmc    /dev/block/bootdevice/by-name/uefi                                 flags=backup=1;slotselect;subpartitionof=/abl
+/uefivarstore          emmc    /dev/block/bootdevice/by-name/uefivarstore                         flags=backup=1;slotselect;subpartitionof=/abl
 /uefisecapp            emmc    /dev/block/bootdevice/by-name/uefisecapp                           flags=backup=1;slotselect;subpartitionof=/abl
 /aop                   emmc    /dev/block/bootdevice/by-name/aop                                  flags=backup=1;slotselect;subpartitionof=/abl
 /devcfg                emmc    /dev/block/bootdevice/by-name/devcfg                               flags=backup=1;slotselect;subpartitionof=/abl
@@ -79,6 +84,12 @@
 /shrm                  emmc    /dev/block/bootdevice/by-name/shrm                                 flags=backup=1;slotselect;subpartitionof=/abl
 /pvmfw                 emmc    /dev/block/bootdevice/by-name/pvmfw                                flags=backup=1;slotselect;subpartitionof=/abl
 /multiimgqti           emmc    /dev/block/bootdevice/by-name/multiimgqti                          flags=backup=1;slotselect;subpartitionof=/abl
+/qweslicstore          emmc    /dev/block/bootdevice/by-name/qweslicstore                         flags=backup=1;slotselect;subpartitionof=/abl
+/cpucp_dtb             emmc    /dev/block/bootdevice/by-name/cpucp_dtb                            flags=backup=1;slotselect;subpartitionof=/abl
+/cdt                   emmc    /dev/block/bootdevice/by-name/cdt                                  flags=backup=1;subpartitionof=/abl
+/ddr                   emmc    /dev/block/bootdevice/by-name/ddr                                  flags=backup=1;subpartitionof=/abl
+/tzsc                  emmc    /dev/block/bootdevice/by-name/tzsc                                 flags=backup=1;subpartitionof=/abl
+/toolsfv               emmc    /dev/block/bootdevice/by-name/toolsfv                              flags=backup=1;subpartitionof=/abl
 
 # Removable storage
 /storage       	       auto    /data/media/0                  		                              flags=display="Internal Storage";backup=1;usermrf;fsflags="bind,utf8";removable
