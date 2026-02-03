@@ -14,7 +14,7 @@ OF_ALLOW_DISABLE_NAVBAR := 0
 OF_OPTIONS_LIST_NUM := 9
 
 # Quick backup (Boot, sensor data)
-OF_QUICK_BACKUP_LIST := /boot;/persist_image
+OF_QUICK_BACKUP_LIST := /boot;/persist_image;
 
 # Security (Disables MTP & ADB during password prompt)
 # OF_ADVANCED_SECURITY := 1
