@@ -120,9 +120,6 @@ TW_NO_SCREEN_BLANK      := true
 TW_NO_HAPTICS           := true
 TW_FRAMERATE            := 120
 
-# Blacklist Goodix fingerprint. There's no reason to include this input in recovery
-TW_INPUT_BLACKLIST := "uinput-goodix"
-
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone14/temp"
 TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
 
