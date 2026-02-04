@@ -9,20 +9,31 @@ LOGMSG() {
 }
 
 do_prep() {
-	directory=/data/cache/recovery/;
+    recovery_cache="/data/cache/recovery/"
+    metadata_directories=(
+        "bootstat:0750:system:log"
+        "ota:0750:root:system"
+        "ota/snapshots:0750:root:system"
+		"staged-install:0770:root:system"
+        "userspacereboot:0770:root:system"
+        "watchdog:0770:root:system"
+    )
 
-	if [ ! -d $directory ]; then
-		LOGMSG "Creating $directory ...";
-		mkdir -p $directory;
-	fi
+    mkdir -p "$recovery_cache"
 
-	mount /metadata 2>/dev/null;
-
-	metadata_ota=/metadata/ota;
-	if [ ! -d $metadata_ota ]; then
-		LOGMSG "Creating $metadata_ota ...";
-		mkdir -p $metadata_ota;
-	fi
+    if mountpoint -q /metadata || mount /metadata 2>/dev/null; then
+        for entry in "${metadata_directories[@]}"; do
+            IFS=":" read -r path mode owner group <<< "$entry"
+            full_path="/metadata/$path"
+            
+            mkdir -p "$full_path"
+            chmod "$mode" "$full_path"
+            chown "$owner:$group" "$full_path"
+        done
+    else
+        LOGMSG "Failed to mount metadata, aborting";
+        exit 1
+    fi
 }
 
 backup_fox() {
