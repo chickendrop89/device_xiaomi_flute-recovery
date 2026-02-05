@@ -43,7 +43,9 @@ BOARD_RAMDISK_USE_LZ4 := true
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3 # disable hashtree + verification
+
+# Disable hashtree + verification
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
