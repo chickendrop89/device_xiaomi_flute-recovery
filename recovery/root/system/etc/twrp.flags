@@ -93,5 +93,5 @@
 
 # Removable storage
 /storage       	       auto    /data/media/0                  		                              flags=display="Internal Storage";backup=1;usermrf;fsflags="bind,utf8";removable
-/usb_otg               auto    /dev/block/sdg1                            /dev/block/sdg          flags=display="USB-Storage";fsflags="utf8";storage;formattable;removable
+/usb_otg               auto    /dev/block/sdg1                            /dev/block/sdg          flags=display="USB-Storage";fsflags="utf8,sync";storage;formattable;removable
 /sdcard1               auto    /dev/block/mmcblk1p1                       /dev/block/mmcblk1      flags=display="MicroSD";storage;formattable;removable
