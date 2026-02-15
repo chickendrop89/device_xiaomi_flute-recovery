@@ -32,7 +32,7 @@
 /frp                   emmc    /dev/block/bootdevice/by-name/frp
 
 # UEFI boot logs
-/logfs                 vfat    /dev/block/bootdevice/by-name/logfs                                flags=display="LogFS (UEFI)";fsflags="fmask=0000,dmask=0000,utf8,shortname=mixed"
+/logfs                 vfat    /dev/block/bootdevice/by-name/logfs                                flags=display="LogFS (UEFI)";fsflags="umask=006,uid=1000,gid=1000,utf8"
 
 # VBMeta/AVB partitions
 /dtbo                  emmc    /dev/block/bootdevice/by-name/dtbo                                 flags=display="DTBO";backup=1;slotselect;flashimg=1
