@@ -6,7 +6,6 @@ import init.recovery.encryption.rc
 on early-init
     loglevel 7
     write /sys/fs/selinux/enforce 0
-    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
 
 on early-init
     # UFS Tuning
@@ -27,8 +26,10 @@ on property:twrp.modules.loaded=true
     mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
 
     wait /sys/kernel/boot_adsp/boot
+    wait /vendor/firmware_mnt/image/adsp.mdt
+
     write /sys/kernel/boot_adsp/boot 1
-    
+
     setprop twrp.firmware.mounted true
 
 on init
