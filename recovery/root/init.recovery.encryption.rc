@@ -34,8 +34,6 @@ on property:of_decryption_failed=true
 
 # HM: Runs during decryption process
 on property:twrp.firmware.mounted=true && property:init.svc.vendor.gatekeeper-qti=running && property:init.svc.touchfeature-service=running
-    exec u:r:recovery:s0 -- /system/bin/sh -c "/system/bin/sleep 1"
-
     umount /vendor/firmware_mnt
     umount /firmware
     umount /mnt/vendor/persist
