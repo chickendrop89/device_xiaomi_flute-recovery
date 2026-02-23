@@ -20,22 +20,28 @@ on property:twrp.all.users.decrypted=true
     stop vendor.ssgtzd
     stop vendor.gatekeeper-qti
 
+    setprop twrp.firmware.mounted false
+
 # Runs after decryption
 on property:twrp.all.users.decrypted=true
+    setprop twrp.firmware.mounted false
+
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 10000
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
     write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 1
 
 # Runs if decryption failed/was canceled
 on property:of_decryption_failed=true
+    setprop twrp.firmware.mounted false
+
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 10000
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
     write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 1
 
 # HM: Runs during decryption process
-on property:twrp.firmware.mounted=true && property:init.svc.vendor.gatekeeper-qti=running && property:init.svc.touchfeature-service=running
+on property:twrp.firmware.mounted=false && property:twrp.firmware.umounted=
     umount /vendor/firmware_mnt
     umount /firmware
     umount /mnt/vendor/persist
 
-    setprop twrp.firmware.mounted false
+    setprop twrp.firmware.umounted true
