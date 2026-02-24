@@ -38,7 +38,11 @@ on property:of_decryption_failed=true
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
     write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 1
 
-# HM: Runs during decryption process
+# Runs if the current boot mode is fastbootd
+on property:ro.twrp.fastbootd=1 && property:twrp.firmware.mounted=true
+    setprop twrp.firmware.mounted false
+
+# HM: Runs after decryption/fastbootd process
 on property:twrp.firmware.mounted=false && property:twrp.firmware.umounted=
     umount /vendor/firmware_mnt
     umount /firmware
