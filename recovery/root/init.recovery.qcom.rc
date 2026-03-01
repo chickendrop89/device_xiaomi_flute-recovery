@@ -14,15 +14,10 @@ on early-init
     write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 0
 
 on property:twrp.modules.loaded=true && property:twrp.firmware.loaded=
-    mkdir /firmware 0775 shell system
-    mkdir /vendor/firmware_mnt 0775 shell system
-
     mkdir /mnt/vendor 0775 shell system
     mkdir /mnt/vendor/persist 0775 shell system
-    mkdir /tmp/persist 0775 shell system
 
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
-    mount none /firmware /vendor/firmware_mnt bind
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /vendor/firmware_mnt ro
     mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
 
     wait /sys/kernel/boot_adsp/boot
