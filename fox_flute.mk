@@ -42,3 +42,6 @@ OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
 
 # Fix clock/time issues
 OF_USE_LEGACY_TIME_FIXUP := 1
+
+# Enable the FRP reset addon
+OF_ENABLE_FRP_ADDON := 1

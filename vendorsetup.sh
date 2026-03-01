@@ -49,7 +49,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ];
 
     # OrangeFox Addons
     export FOX_ENABLE_APP_MANAGER=1
-    export OF_ENABLE_FRP_ADDON=1
     export FOX_DELETE_AROMAFM=1
     export FOX_DELETE_INITD_ADDON=1
 
