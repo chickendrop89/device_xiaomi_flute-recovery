@@ -10,22 +10,26 @@ LOGMSG() {
 
 do_prep() {
     recovery_cache="/data/cache/recovery/"
-    metadata_directories=(
-        "bootstat:0750:system:log"
-        "ota:0750:root:system"
-        "ota/snapshots:0750:root:system"
-		"staged-install:0770:root:system"
-        "userspacereboot:0770:root:system"
-        "watchdog:0770:root:system"
-    )
+    metadata_entries="
+        bootstat:0750:system:log
+        ota:0750:root:system
+        ota/snapshots:0750:root:system
+        staged-install:0770:root:system
+        userspacereboot:0770:root:system
+        watchdog:0770:root:system
+    "
 
     mkdir -p "$recovery_cache"
 
     if mountpoint -q /metadata || mount /metadata 2>/dev/null; then
-        for entry in "${metadata_directories[@]}"; do
-            IFS=":" read -r path mode owner group <<< "$entry"
-            full_path="/metadata/$path"
+        for entry in $metadata_entries; do
+            path=$(echo "$entry" | cut -d: -f1)
+            mode=$(echo "$entry" | cut -d: -f2)
+            owner=$(echo "$entry" | cut -d: -f3)
+            group=$(echo "$entry" | cut -d: -f4)
             
+            full_path="/metadata/$path"
+
             mkdir -p "$full_path"
             chmod "$mode" "$full_path"
             chown "$owner:$group" "$full_path"
