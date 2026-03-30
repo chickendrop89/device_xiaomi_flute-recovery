@@ -11,9 +11,12 @@ LOGMSG() {
 do_prep() {
     recovery_cache="/data/cache/recovery/"
     metadata_entries="
-        bootstat:0750:system:log
+        bootstat:0770:system:log
         ota:0750:root:system
         ota/snapshots:0750:root:system
+        gsi:0750:root:system
+        gsi/ota:0750:root:system
+        gsi/dsu:0750:root:system
         staged-install:0770:root:system
         userspacereboot:0770:root:system
         watchdog:0770:root:system
