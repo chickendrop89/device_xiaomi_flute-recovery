@@ -8,7 +8,7 @@ LOGMSG() {
 	echo "I:$1" >> /tmp/recovery.log;
 }
 
-do_prep() {
+do_dir_prep() {
     recovery_cache="/data/cache/recovery/"
     metadata_entries="
         bootstat:0770:system:log
@@ -43,6 +43,17 @@ do_prep() {
     fi
 }
 
+do_prop_prep() {
+    LOGMSG "Resetting SPL date to prevent data wipe..."
+    resetprop twrp.temp.security_patch $(resetprop ro.build.version.security_patch)
+
+    resetprop ro.build.version.security_patch 2025-09-02
+    resetprop ro.vendor.build.security_patch 2025-09-02
+
+    LOGMSG "Setting verified boot state to orange to prevent OTA rejection..."
+    resetprop ro.boot.verifiedbootstate orange
+}
+
 backup_fox() {
 	file=$1;
 
@@ -61,6 +72,7 @@ backup_fox() {
 }
 
 LOGMSG "Running pre-ROM-flash script...";
-do_prep;
+do_dir_prep;
+do_prop_prep;
 backup_fox "$@";
 exit 0;
