@@ -28,6 +28,14 @@ on property:twrp.all.users.decrypted=true
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
     write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 1
 
+# Runs after decryption, but only if user has second space/dual apps
+on property:twrp.decrypt.done=true && property:twrp.user.999.decrypt=0
+    setprop twrp.firmware.mounted false
+
+    write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 10000
+    write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
+    write /sys/bus/platform/devices/1d84000.ufshc/enable_wb_buf_flush 1
+
 # Runs if decryption failed/was canceled
 on property:of_decryption_failed=true
     setprop twrp.firmware.mounted false
