@@ -8,8 +8,6 @@
 # mount point          fstype  device                                        device2              flags
 
 # Special logical partitions (custom label)
-/mi_ext                ext4    mi_ext                                                             flags=display="Mi EXT";logical;slotselect
-/mi_ext                erofs   mi_ext                                                             flags=display="Mi EXT";logical;slotselect
 /system_ext            ext4    system_ext                                                         flags=display="System EXT";logical;slotselect
 /system_ext            erofs   system_ext                                                         flags=display="System EXT";logical;slotselect
 /vendor_dlkm           ext4    vendor_dlkm                                                        flags=display="Vendor DLKM";logical;slotselect
