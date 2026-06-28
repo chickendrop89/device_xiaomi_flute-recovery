@@ -37,11 +37,11 @@
 /persist_image         emmc    /dev/block/bootdevice/by-name/persist                              flags=display="Persist";flashimg=1;backup=1
 
 # Modem/Firmware partitions
-/modem                 vfat    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;fsflags="ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait"
+/modem                 vfat    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;fsflags="ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0"
 /modem_image           emmc    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;backup=1;flashimg=1
 /dsp                   ext4    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect;fsflags="ro"
 /dsp_image             emmc    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect;backup=1
-/bluetooth             vfat    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait"
+/bluetooth             vfat    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0"
 /bluetooth_image       emmc    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;backup=1;flashimg=1
 /dtbo                  emmc    /dev/block/bootdevice/by-name/dtbo                                 flags=display="DTBO";backup=1;slotselect;flashimg=1
 
