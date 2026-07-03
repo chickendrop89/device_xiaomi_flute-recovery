@@ -4,10 +4,7 @@ prebuilt/kernel binary
 recovery/root/vendor/bin/* binary
 recovery/root/vendor/bin/hw/* binary
 
-*.ko binary
 *.so binary
 *.bin binary
-*.fsm binary
 *.mdt binary
 *.b[0-9]* binary
-*.elf binary
