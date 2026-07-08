@@ -17,7 +17,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # OTA device(s)
-TARGET_OTA_ASSERT_DEVICE := flute
+TARGET_OTA_ASSERT_DEVICE := flute,flute_global
 
 # FastbootD support
 PRODUCT_PACKAGES += \
