@@ -21,7 +21,6 @@ TARGET_OTA_ASSERT_DEVICE := flute
 
 # Boot control, Kernel prebuilts
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-qti.recovery \
     vendor_kernel_prebuilts
 
 # FastbootD support

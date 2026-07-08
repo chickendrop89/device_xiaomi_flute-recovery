@@ -29,7 +29,7 @@ on property:twrp.modules.loaded=true && property:twrp.firmware.loaded=
     setprop twrp.firmware.mounted true
 
 on init
-    start boot-hal-1-2
+    start vendor.boot-qti
 
 on early-fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
