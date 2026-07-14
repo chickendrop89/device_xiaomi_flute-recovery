@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-# Copyright (C) 2026 chickendrop89
+# Copyright (C) 2026 chkndrp
 # SPDX-License-Identifier: GPL-3.0-only
 
 LOGMSG() {

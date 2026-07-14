@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copyright (C) 2025-2026 OrangeFox Recovery Project
-# Copyright (C) 2026 chickendrop89
+# Copyright (C) 2026 chkndrp
 # SPDX-License-Identifier: GPL-3.0-only
 
 FDEVICE="flute"
@@ -85,7 +85,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ];
     fi
 
     export LC_ALL="C"
-    export BUILD_USERNAME=chickendrop89
+    export BUILD_USERNAME=chkndrp
     export BUILD_HOSTNAME=github
 
     # Debugging

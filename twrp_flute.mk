@@ -1,5 +1,5 @@
 # Copyright (C) 2025-2026 OrangeFox Recovery Project
-# Copyright (C) 2026 chickendrop89
+# Copyright (C) 2026 chkndrp
 # SPDX-License-Identifier: GPL-3.0-only
 
 # Inherit from these configurations

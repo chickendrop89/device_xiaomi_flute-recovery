@@ -1,5 +1,5 @@
 # Copyright (C) 2025 The Android Open Source Project
-# Copyright (C) 2026 chickendrop89
+# Copyright (C) 2026 chkndrp
 # SPDX-License-Identifier: Apache-2.0
 
 import /vendor/etc/ueventd.rc

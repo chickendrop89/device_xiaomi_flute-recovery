@@ -1,9 +1,9 @@
 # Copyright (C) 2025-2026 OrangeFox Recovery Project
-# Copyright (C) 2026 chickendrop89
+# Copyright (C) 2026 chkndrp
 # SPDX-License-Identifier: GPL-3.0-only
 
 # OrangeFox maintainer
-OF_MAINTAINER := chickendrop89
+OF_MAINTAINER := chkndrp
 
 # Screen settings
 OF_SCREEN_H := 1728
