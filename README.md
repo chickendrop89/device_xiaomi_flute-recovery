@@ -34,8 +34,7 @@ Display                 | 12.1" IPS LCD, 120Hz, 1600x2560 (16:10)
 - [x] Custom splash
 
 ## Notes
-Despite being on the same SoC family as `xiaomi-amethyst`, the base devices do not have
-dedicated SIM/eSIM, meaning that instead of using Secure Element/StrongBox for decryption, TEE is used instead
+This device does not have SIM/eSIM, so TEE is used instead of Secure Element/StrongBox
 
 ```
 vendor.gatekeeper.disable_spu=true
